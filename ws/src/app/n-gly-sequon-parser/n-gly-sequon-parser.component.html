@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container input-form">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">N-glycosylation Sequon Parser</h4>
-      <h6 class="card-subtitle mb-2 text-muted">An entirely javascript based N-glycosylation sequon parser.</h6>
+      <h6 class="card-subtitle mb-2 text-muted">A javascript based N-glycosylation sequon parser.</h6>
       <hr class="my-4">
       <form>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon" id="label-peptide">Peptide Summary</span>
-            <input type="file" class="form-control" aria-label="peptide-summary" aria-describedby="label-peptide" #ifile (change)="fileHandler($event)">
+            <input type="file" class="form-control" aria-label="peptide-summary" aria-describedby="label-peptide" #ifile (change)="result=fileHandler($event)">
           </div>
         </div>
       </form>

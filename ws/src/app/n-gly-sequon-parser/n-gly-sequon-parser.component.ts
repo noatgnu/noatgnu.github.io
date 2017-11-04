@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {FileHandlerService} from "../file-handler.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {FileHandlerService} from "../file-handler.service";
 })
 export class NGlySequonParserComponent implements OnInit {
   fileHandler;
-  @ViewChild("ifile") inputFile;
+  result: String[][];
   constructor(_fh: FileHandlerService) {
     this.fileHandler = _fh.fileHandler;
   }
