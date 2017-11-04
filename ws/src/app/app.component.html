@@ -4,13 +4,13 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation"
-           (click)="toggleCollapsed()">
+          (click)="toggleCollapsed()">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -20,7 +20,7 @@
           Dropdown
         </a>
         <div ngbDropdownMenu aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" routerLink="/nsp" routerLinkActive="active">N-glycosylation Sequon Parser</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -33,12 +33,5 @@
   </div>
 </nav>
 
-<div class="jumbotron">
-  <h1 class="display-3">Welcome to Schulz Lab</h1>
-  <p class="lead">R444, MBS Building, The University of Queensland.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
+<router-outlet></router-outlet>
+
