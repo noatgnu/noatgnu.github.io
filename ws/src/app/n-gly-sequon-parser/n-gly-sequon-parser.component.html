@@ -47,7 +47,7 @@
     <h6 class="card-subtitle mb-2 text-primary" [hidden]="!processing">Processing <i class="fa fa-circle-o-notch fa-spin"></i></h6>
     <h6 class="card-subtitle mb-2 text-success" [hidden]="!finished">Finished <i class="fa fa-check-circle-o" aria-hidden="true"></i></h6>
     <div class="result-link" [hidden]="!finished" #resultElem>
-      <a [href]="downloadLink" download="parsed_{{result.fileName}}">Filtered Ouput</a>
+      <a [href]="downloadLink" download="parsed_{{result?.fileName}}">Filtered Ouput</a>
     </div>
   </div>
 
