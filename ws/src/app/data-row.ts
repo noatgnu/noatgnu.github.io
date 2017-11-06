@@ -38,31 +38,28 @@ export class DataStore {
     }
 }
 
-  filterSequon(ignoreMod: boolean): void {
+  static filterSequon(ignoreMod: boolean, data: DataRow[], seqColumn: number): DataRow[] {
     let d: DataRow[] = [];
-    for (let row of this.data) {
+    for (let row of data) {
       if (ignoreMod) {
-        if (row.hasSequonNoMod(this.seqColumn)) {
+        if (row.hasSequonNoMod(seqColumn)) {
           d.push(row);
         }
       } else {
-        if (row.hasSequon(this.seqColumn)) {
+        if (row.hasSequon(seqColumn)) {
           d.push(row);
         }
       }
-
     }
-    this.data = d;
+    return d
   }
 
-  toCSV(): string {
+  static toCSV(header: string[], data: DataRow[]): string {
     let csvContent = "";
-    csvContent += this.header.join("\t") + "\n";
-    for (let row of this.data) {
+    csvContent += header.join("\t") + "\n";
+    for (let row of data) {
       csvContent += row.row.join("\t") + "\n";
     }
-    let newName = "parsed_"+this.fileName;
-    console.log(newName);
     let blob = new Blob([csvContent], {"type": 'text/csv;charset=utf-8;'});
     return URL.createObjectURL(blob);
     /*if (navigator.msSaveBlob) {

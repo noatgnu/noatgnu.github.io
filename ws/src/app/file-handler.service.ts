@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {DataRow, DataStore} from "./data-row";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
-import {reject} from "q";
 
 @Injectable()
 export class FileHandlerService {

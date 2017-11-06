@@ -18,7 +18,8 @@ export class NGlySequonParserComponent implements OnInit {
   processing = false;
   finished = false;
   fileSize: number;
-  downloadLink: SafeUrl;
+  downloadLinks: string[] = [];
+  safeDownloadLink: SafeUrl[] = [];
   sanitize;
 
   @ViewChild("resultElem") resultElem;
@@ -30,6 +31,13 @@ export class NGlySequonParserComponent implements OnInit {
   }
 
   async processFile(e){
+    if (this.downloadLinks.length > 0) {
+      for (let link of this.downloadLinks) {
+        URL.revokeObjectURL(link);
+      }
+      this.downloadLinks = [];
+      this.safeDownloadLink = [];
+    }
     this.result = await this.fileHandler(e, this.loadHeader);
     this.fileSize = this.result.data.length;
   }
@@ -45,17 +53,14 @@ export class NGlySequonParserComponent implements OnInit {
         }
       });
       console.log(this.result.seqColumn);
-      this.result.filterSequon(f.value.ignoreMod);
-
-      this.downloadLink = this.sanitization.bypassSecurityTrustResourceUrl(this.result.toCSV());
+      let d = DataStore.filterSequon(f.value.ignoreMod, this.result.data, this.result.seqColumn);
+      this.downloadLinks.push(DataStore.toCSV(this.result.header, d));
+      for (let link of this.downloadLinks) {
+        this.safeDownloadLink.push(this.sanitization.bypassSecurityTrustResourceUrl(link));
+      }
       this.processing = false;
       this.finished = true;
     }
-
-    console.log(f.value);
-    console.log(f.valid);
-
-
   }
 
 }
