@@ -1,5 +1,5 @@
 <div class="container input-form">
-  <div class="card">
+  <div class="card mt-4">
     <div class="card-body">
       <h4 class="card-title">N-glycosylation Sequon Parser</h4>
       <h6 class="card-subtitle mb-2 text-muted">A javascript based N-glycosylation sequon parser.</h6>
@@ -39,16 +39,20 @@
   </div>
 </div>
 
-<div class="card result-card" [hidden]="!started">
+<div class="card result-card mt-4" [hidden]="!started">
   <div class="card-body">
     <h5 class="card-title">
       Result
     </h5>
     <h6 class="card-subtitle mb-2 text-primary" [hidden]="!processing">Processing <i class="fa fa-circle-o-notch fa-spin"></i></h6>
     <h6 class="card-subtitle mb-2 text-success" [hidden]="!finished">Finished <i class="fa fa-check-circle-o" aria-hidden="true"></i></h6>
+
     <div class="result-link" [hidden]="!finished" #resultElem>
-      <a *ngFor="let link of safeDownloadLink" [href]="link" download="parsed_{{result?.fileName}}">Filtered Ouput</a>
+      <p class="card-text">
+        <a *ngFor="let link of safeDownloadLink" [href]="link" [download]="'parsed_'+result?.fileName">Filtered Ouput</a>
+      </p>
     </div>
+
   </div>
 
 </div>
