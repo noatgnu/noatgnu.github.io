@@ -31,8 +31,8 @@ window.onmessage = event => {
     // Register the worker, then forward the dataChannel to the worker
     // So they can talk directly, so we don't have to be "the middle man" any
     // longer
-    navigator.serviceWorker.getRegistration('./').then(swReg => {
-		return swReg || navigator.serviceWorker.register('sw.js', {scope: './'})
+    navigator.serviceWorker.getRegistration('/mitm/').then(swReg => {
+		return swReg || navigator.serviceWorker.register('sw.js', {scope: '/mitm/'})
     }).then(swReg => {
 		// This sends the message data as well as transferring
 		// messageChannel.port2 to the service worker. The service worker can
