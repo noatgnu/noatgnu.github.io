@@ -18,14 +18,8 @@ if (window.location.host === host && window.location.protocol !== "https:") {
   if (window.location.hostname !== "localhost") {
     window.location.protocol = "https:"
   }
-
 }
 
-
-// message event is the first thing we need to setup a listner for
-// don't want the opener to do a random timeout - instead they can listen for
-// the ready event
-console.log('start');
 onmessage = event => {
   console.log(event);
   let {data, ports} = event;
@@ -56,10 +50,12 @@ onmessage = event => {
     }
   })
 };
-window.addEventListener('message', onmessage, true);
 
-
-
+// message event is the first thing we need to setup a listner for
+// don't want the opener to do a random timeout - instead they can listen for
+// the ready event
+console.log('start');
+window.addEventListener('message', onmessage);
 // The opener can't listen to onload event, so we need to help em out!
 // (telling them that we are ready to accept postMessage's)
 targetWindow = opener;
