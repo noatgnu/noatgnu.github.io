@@ -10,7 +10,7 @@
 	to open up a link that will start the download
 -->
 <script>
-let host = window.location.host
+let host = 'schulzlab.glycoproteo.me'
 
 // Service worker only works on https, 127.0.0.1 and localhost
 // So we just redirect asap
@@ -22,7 +22,7 @@ if (window.location.host == host && window.location.protocol != "https:")
 // the ready event
 window.onmessage = event => {
 	let {data, ports} = event
-	console.log('started')
+	
 	// It's important to have a messageChannel, don't want to interfere
 	// with other simultaneous downloads
     if(!ports || !ports.length)
