@@ -32,7 +32,7 @@ window.onmessage = event => {
     // So they can talk directly, so we don't have to be "the middle man" any
     // longer
     navigator.serviceWorker.getRegistration('./').then(swReg => {
-		return swReg || navigator.serviceWorker.register('sw.js', {scope: './'}).then({function(swReg) {
+		return swReg || navigator.serviceWorker.register('/sw.js', {scope: './'}).then({function(swReg) {
 			console.log("Registration done with scope "+ swReg.scope)
 			return swReg
 		}})
