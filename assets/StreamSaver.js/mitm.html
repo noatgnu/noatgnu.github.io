@@ -12,16 +12,6 @@
 <html>
 <head>
   <script>
-    let host = window.location.host;
-
-    // Service worker only works on https, 127.0.0.1 and localhost
-    // So we just redirect asap
-    if (window.location.host === host && window.location.protocol !== "https:") {
-      if (window.location.hostname !== "localhost") {
-        window.location.protocol = "https:"
-      }
-    }
-
     function onmessage(event) {
       let {data, ports} = event;
       if(!ports || !ports.length) {
@@ -42,10 +32,20 @@
       })
     }
     window.addEventListener('message', onmessage);
+    let host = window.location.host;
+
+    // Service worker only works on https, 127.0.0.1 and localhost
+    // So we just redirect asap
+    if (window.location.host === host && window.location.protocol !== "https:") {
+      if (window.location.hostname !== "localhost") {
+        window.location.protocol = "https:"
+      }
+    }
+
+
     // The opener can't listen to onload event, so we need to help em out!
     // (telling them that we are ready to accept postMessage's)
     targetWindow = opener;
-    console.log(opener);
     targetWindow.postMessage('StreamSaver::loadedPopup', '*')
   </script>
 </head>
