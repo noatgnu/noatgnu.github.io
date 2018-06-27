@@ -23,7 +23,7 @@
   onmessage = event => {
     console.log('received message');
     let {data, ports} = event;
-    console.log(data, ports);
+    console.log(event.data);
     // It's important to have a messageChannel, don't want to interfere
     // with other simultaneous downloads
     if(!ports || !ports.length) {
