@@ -79,7 +79,6 @@
 						window.removeEventListener('message', onready)
             clearInterval(si)
 					}
-					popup.postMessage('test2', '*');
 				}, 2000)
 				let onready = evt => {
 					console.log('mitm created')
