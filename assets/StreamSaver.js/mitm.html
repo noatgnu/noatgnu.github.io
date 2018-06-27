@@ -20,7 +20,7 @@
   // message event is the first thing we need to setup a listner for
   // don't want the opener to do a random timeout - instead they can listen for
   // the ready event
-  onmessage = event => {
+  function onmessage (event) {
     console.log('received message');
     let {data, ports} = event;
     console.log(event.data);
