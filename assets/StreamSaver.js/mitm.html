@@ -20,7 +20,7 @@
   // message event is the first thing we need to setup a listner for
   // don't want the opener to do a random timeout - instead they can listen for
   // the ready event
-  window.onmessage = event => {
+  onmessage = event => {
     console.log('received message');
     let {data, ports} = event;
     console.log(data, ports);
@@ -53,6 +53,7 @@
     // So they can talk directly, so we don't have to be "the middle man" any
     // longer
   };
+  addEventListener('message', onmessage, false);
   window.parent.postMessage('test', '*');
   // The opener can't listen to onload event, so we need to help em out!
   // (telling them that we are ready to accept postMessage's)
