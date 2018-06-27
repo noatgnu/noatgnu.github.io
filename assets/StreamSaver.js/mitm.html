@@ -13,12 +13,15 @@
 <head>
   <script>
     window.onload = function () {
-      function onmessage(event) {
+      console.log('Ready!')
+      window.addEventListener('message', function(event) {
+        console.log(event);
+        event.preventDefault();
         let {data, ports} = event;
         if(!ports || !ports.length) {
           throw new TypeError("Mehhh! You didn't send a messageChannel");
         }
-        console.log('Received data from source')
+        console.log('Received data from source');
         navigator.serviceWorker.getRegistration('./').then(swReg => {
           return swReg || navigator.serviceWorker.register('/assets/StreamSaver.js/sw.js', {scope: './'})
         }).then(swReg => {
@@ -32,8 +35,7 @@
               swReg.active.postMessage(data, [ports[0]])
           }
         })
-      }
-      window.addEventListener('message', onmessage);
+      }, false);
       let host = window.location.host;
 
       if (window.location.host === host && window.location.protocol !== "https:") {
