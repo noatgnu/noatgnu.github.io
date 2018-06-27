@@ -12,42 +12,47 @@
 <html>
 <head>
   <script>
-    function onmessage(event) {
-      let {data, ports} = event;
-      if(!ports || !ports.length) {
-        throw new TypeError("Mehhh! You didn't send a messageChannel");
-      }
-      navigator.serviceWorker.getRegistration('./').then(swReg => {
-        return swReg || navigator.serviceWorker.register('/assets/StreamSaver.js/sw.js', {scope: './'})
-      }).then(swReg => {
-        let swRegTmp = swReg.installing || swReg.waiting;
-
-        if (swReg.active)
-          return swReg.active.postMessage(data, [ports[0]]);
-
-        swRegTmp.onstatechange = () => {
-          if (swRegTmp.state === 'activated')
-            swReg.active.postMessage(data, [ports[0]])
+    window.onload = function () {
+      function onmessage(event) {
+        let {data, ports} = event;
+        if(!ports || !ports.length) {
+          throw new TypeError("Mehhh! You didn't send a messageChannel");
         }
-      })
-    }
-    window.addEventListener('message', onmessage);
-    let host = window.location.host;
+        navigator.serviceWorker.getRegistration('./').then(swReg => {
+          return swReg || navigator.serviceWorker.register('/assets/StreamSaver.js/sw.js', {scope: './'})
+        }).then(swReg => {
+          let swRegTmp = swReg.installing || swReg.waiting;
 
-    // Service worker only works on https, 127.0.0.1 and localhost
-    // So we just redirect asap
-    if (window.location.host === host && window.location.protocol !== "https:") {
-      if (window.location.hostname !== "localhost") {
-        window.location.protocol = "https:"
+          if (swReg.active)
+            return swReg.active.postMessage(data, [ports[0]]);
+
+          swRegTmp.onstatechange = () => {
+            if (swRegTmp.state === 'activated')
+              swReg.active.postMessage(data, [ports[0]])
+          }
+        })
       }
-    }
+      window.addEventListener('message', onmessage);
+      let host = window.location.host;
+
+      // Service worker only works on https, 127.0.0.1 and localhost
+      // So we just redirect asap
+      if (window.location.host === host && window.location.protocol !== "https:") {
+        if (window.location.hostname !== "localhost") {
+          window.location.protocol = "https:"
+        }
+      }
 
 
-    // The opener can't listen to onload event, so we need to help em out!
-    // (telling them that we are ready to accept postMessage's)
+      // The opener can't listen to onload event, so we need to help em out!
+      // (telling them that we are ready to accept postMessage's)
 
-    targetWindow = opener;
-    targetWindow.postMessage('StreamSaver::loadedPopup', '*')
+      targetWindow = opener;
+      if (targetWindow !== null) {
+        targetWindow.postMessage('StreamSaver::loadedPopup', '*')
+      }
+    };
+
   </script>
 </head>
 <body>
