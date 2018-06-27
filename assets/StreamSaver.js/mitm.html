@@ -38,6 +38,7 @@
       // messageChannel.port2 to the service worker. The service worker can
       // then use the transferred port to reply via postMessage(), which
       // will in turn trigger the onmessage handler on messageChannel.port1.
+      console.log('Setting up port2');
       let swRegTmp = swReg.installing || swReg.waiting
 
       if (swReg.active)
