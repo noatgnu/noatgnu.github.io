@@ -21,6 +21,7 @@
   // don't want the opener to do a random timeout - instead they can listen for
   // the ready event
   window.onmessage = event => {
+    console.log('received message')
     let {data, ports} = event
     console.log(data, ports)
     // It's important to have a messageChannel, don't want to interfere
