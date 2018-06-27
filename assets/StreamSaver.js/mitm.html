@@ -13,7 +13,7 @@
 <head>
   <script>
     window.onload = function () {
-      console.log('Ready!')
+
       window.addEventListener('message', function(event) {
         console.log(event);
         event.preventDefault();
@@ -37,7 +37,7 @@
         })
       }, false);
       let host = window.location.host;
-
+      console.log('Ready!');
       if (window.location.host === host && window.location.protocol !== "https:") {
         if (window.location.hostname !== "localhost") {
           window.location.protocol = "https:"
