@@ -55,7 +55,9 @@ onmessage = event => {
 // don't want the opener to do a random timeout - instead they can listen for
 // the ready event
 console.log('start');
-window.addEventListener('message', onmessage);
+window.addEventListener('message', function(event) {
+  console.log(event);
+});
 // The opener can't listen to onload event, so we need to help em out!
 // (telling them that we are ready to accept postMessage's)
 targetWindow = opener;
