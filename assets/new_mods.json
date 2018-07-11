@@ -98,7 +98,7 @@
     },
     {
       "name": "Methylated Carboxylation",
-      "label": "e",
+      "label": "m",
       "mass": 58.00548,
       "regex": "E",
       "type": "variable",
