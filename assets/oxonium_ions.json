@@ -11,6 +11,11 @@
       "dependencies": ["O-Mannose","HexNAc"]
     },
     {
+      "components": "Hex-H2O",
+      "mz": 145.049535767,
+      "dependencies": ["O-Mannose", "HexNAc"]
+    },
+    {
       "components": "Hex",
       "mz": 163.060100451,
       "dependencies": ["O-Mannose", "HexNAc"]
