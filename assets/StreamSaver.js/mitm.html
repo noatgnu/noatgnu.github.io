@@ -32,7 +32,7 @@
     // message event is the first thing we need to setup a listner for
     // don't want the opener to do a random timeout - instead they can listen for
     // the ready event
-
+    console.log(host);
     function onmessage (event) {
       console.log('received message');
       let {data, ports} = event;
@@ -73,9 +73,7 @@
 
     addEventListener('message', onmessage, false);
     window.parent.postMessage('test', '*');
-    opener = window.parent;
-    console.log(opener);
-    opener.postMessage('StreamSaver::loadedPopup', '*');
+    opener && opener.postMessage('StreamSaver::loadedPopup', '*');
   </script>
 </head>
 <body>
