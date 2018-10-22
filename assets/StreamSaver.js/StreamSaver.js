@@ -12,8 +12,8 @@
 		createWriteStream,
 		supported: false,
 		version: {
-			full: '1.0.0',
-			major: 1, minor: 0, dot: 0
+			full: '1.0.5',
+			major: 1, minor: 0, dot: 5
 		}
 	};
 
