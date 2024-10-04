@@ -18,7 +18,7 @@ Highly skilled Proteomics Data Scientist and Research Software Engineer with ext
 
 - **Software Development:** Git, Docker, CI/CD, Poetry, Angular, Django, Tornado, PostgreSQL
 
-- **Data Analysis/Data Management:**  utilization of data imputation, normalization, batch correction statistical analysis, data visualization, usage of relational database (RDB) for storing and managing structured data output, usage of standard method for version control of analytic pipelines, understanding of conventional data backup practice, understanding method for data integrity verification
+- **Data Analysis/Data Management:**  utilization of data imputation, normalization, batch correction, statistical analysis, data visualization, usage of relational database (RDB) for storing and managing structured data output, usage of standard method for version control of analytic pipelines, understanding of conventional data backup practice, understanding method for data integrity verification
 
 - **Proteomics:** Mass spectrometry (MS) data analysis, protein quantification, differential expression analysis, total and post-translational modification (PTM) (phospho and glycosylation) data analysis.
 
