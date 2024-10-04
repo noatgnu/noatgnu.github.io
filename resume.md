@@ -46,7 +46,7 @@ Highly skilled Proteomics Data Scientist and Research Software Engineer with ext
 
 - Published research findings in peer-reviewed journals and presented at scientific conferences. (PDS)
 
-- Manage and maintain different web-based data analysis platform. (RSE)
+- Host and manage different web-based data analysis platform. (RSE)
 
 - Created CURTAIN and CURTAIN-PTM web-based tools for zero-installation needed proteomics and PTM MS-based data visualization, sharing and exploration. (RSE)
 
